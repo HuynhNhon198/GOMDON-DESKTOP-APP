@@ -36,7 +36,6 @@ const showHide = (content, login) => {
 
 const render = (logged, user) => {
     if (logged) {
-        console.log(user);
         document.getElementById("avatar").src = user.photoURL;
         $('#username').text(user.displayName)
         showHide('block', 'none')
@@ -58,9 +57,6 @@ $('#btn-login').click(async () => {
         var token = result.credential.accessToken;
         // The signed-in user info.
         var user = result.user;
-
-        console.log(user);
-        console.log(token);
 
         // ...
     }).catch(function (error) {

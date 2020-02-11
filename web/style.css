@@ -9,6 +9,7 @@
     /* background: url(https://gomdon.tuhoc247.com/bg.8d35bf7….jpg);
     background-size: cover;
     background-attachment: fixed; */
+    overflow: hidden;
   }
 
   @media (min-width: 768px) {
@@ -19,7 +20,7 @@
   }
 
   .scan div.results {
-    padding: 10px 20px;
+    padding: 10px 0;
     display: block;
     height: 66vh;
     overflow: hidden;
@@ -38,10 +39,30 @@
   div#loading {
     display: block;
     position: fixed;
-    background: #000000de;
-    z-index: 1;
+    background: #ffffffc7;
+    z-index: 999;
     width: 100%;
+    height: 100%;
     color: #fff;
+}
+
+.results li {
+  padding-left: 0;
+}
+
+.results span {
+  font-size: 22px;
+  margin-left: 36px;
+  /* position: absolute; */
+  /* margin-bottom: 4px; */
+  /* display: inline-block; */
+}
+
+.results i.before {
+  margin-right: 20px;
+  position: absolute;
+  margin-top: 5px;
+  color: #034c9a;
 }
 
 span.clear {
@@ -52,7 +73,7 @@ span.clear {
 
 #loading img {
   display: block;
-    margin: auto;
+    margin: 150px auto;;
 }
   #login, #content {
       display: none
@@ -133,8 +154,13 @@ i#logout {
   color: #8a000d;
 }
 span.open-p {
-  font-size: 29px;
+  font-size: 33px;
   color: #00881f;
+  font-weight: 500;
+}
+
+select, span.open-p {
+  font-family: 'Inconsolata', monospace;
 }
 
 i.reload-ports {

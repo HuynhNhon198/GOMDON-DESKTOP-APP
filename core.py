@@ -36,10 +36,13 @@ def read_data_serial():
 
 @eel.expose
 def open_port(port):
-    scanner.open_port(port)
-    return port
+    err = scanner.open_port(port)
+    return {
+        'port': port,
+        'err': err
+    }
 try:
-    eel.start('index.html', block=True, size=(900, 730))
+    eel.start('index.html', block=True, size=(800, 630))
 except (SystemExit, MemoryError, KeyboardInterrupt):
     # We can do something here if needed
     # But if we don't catch these safely, the script will crash

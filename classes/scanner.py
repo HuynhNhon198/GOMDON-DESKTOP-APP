@@ -19,6 +19,7 @@ class Scanner(object):
     def open_port(self, port, callback = None):
         print(port)
         self.ser.port = port
+        err = ''
         try: 
             if self.ser.isOpen():
                 self.ser.close()
@@ -26,11 +27,14 @@ class Scanner(object):
             if callback:
                 callback(port)
             print('open port')
-        except (Exception):
-            print (Exception)
+        except Exception as e:
+            
             self.ser.close()
-            exit()
-        return
+            err = str(e)
+            print('Failed: '+ err)
+            # exit()
+            # pass
+        return err
 
     def close_port(self):
         self.ser.close()
@@ -39,7 +43,11 @@ class Scanner(object):
         arr = []
         ports = serial.tools.list_ports.comports()
         for port, desc, hwid in sorted(ports):
-            arr.append(port)
+            arr.append({
+                'port': port,
+                'desc': desc,
+                'hwid': hwid
+            })
         # print(arr)
         return arr
 
