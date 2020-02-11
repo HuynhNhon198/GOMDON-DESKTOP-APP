@@ -44,27 +44,22 @@ class Scanner(object):
         return arr
 
     def read_data(self):
-        if self.ser.isOpen():
-            a = ''
-            try:
-                while True:
-                    if self.ser.isOpen() == False:
-                        break
-                    else:
-                        s = self.ser.readline()
-                        if s:
-                            a=s.decode()
-                            break
-                # print('start')
-                # self.ser.flushInput() #flush input buffer, discarding all its contents
-                # self.ser.flushOutput()#flush output buffer, aborting current output 
-                #         #and discard all that is in buffer
-                # response = self.ser.read(11)
-                # print(response.decode())
-                # if callback:
-                #     print('callback')
-                #     callback('reply', response.decode(), namespace='/scanner', room=self.clients_scanner[0])
-            except (Exception):
-                print("error communicating...: " + str(Exception))        
+        a = ''
+        try:
+            if self.ser.isOpen():
+                barcode = self.ser.read(15)
+                if barcode != b'':
+                    a = barcode.decode()
+            # print('start')
+            # self.ser.flushInput() #flush input buffer, discarding all its contents
+            # self.ser.flushOutput()#flush output buffer, aborting current output 
+            #         #and discard all that is in buffer
+            # response = self.ser.read(11)
+            # print(response.decode())
+            # if callback:
+            #     print('callback')
+            #     callback('reply', response.decode(), namespace='/scanner', room=self.clients_scanner[0])
+        except (Exception):
+            print("error communicating...: " + str(Exception))        
         
         return a

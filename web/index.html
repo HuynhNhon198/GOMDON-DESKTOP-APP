@@ -15,7 +15,7 @@
 
 <body>
   <div id="content">
-    
+
     <nav class="navbar navbar-light bg-faded justify-content-between flex-nowrap flex-row"
       style="background-color: #e3f2fd;">
       <ul class="nav navbar-nav flex-row float-left">
@@ -33,16 +33,19 @@
           </i></li>
       </ul>
     </nav>
-    <div id="loading">
+    <div id="loading" style="display: none;">
       <p><img src="loader.gif" /></p>
     </div>
     <div class="container" style="margin-top: 20px;">
-      
+
       <div class="tab scan">
         <div class="row">
           <div class="col-sm">
             <div class="form-group">
-              <label for="exampleFormControlSelect1">DANH SÁCH PORT</label>
+              <label for="exampleFormControlSelect1">DANH SÁCH PORT
+              </label><i title="refresh danh sách port" class="material-icons reload-ports">
+                autorenew
+              </i>
               <select class="form-control ports" id="exampleFormControlSelect1">
               </select>
             </div>
@@ -54,9 +57,17 @@
             </span>
           </div>
         </div>
-        <div class="row">
-          <ul class="list-group list-group-flush results">
-            
+        <div class="row barcodes">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item" style="padding-left: 0;padding-right: 0;">
+              KẾT QUẢ QUÉT
+              <span class="clear" title="xóa hết "><i class="material-icons">
+                  cancel
+                </i></span>
+            </li>
+            <div class="results">
+
+            </div>
           </ul>
         </div>
       </div>

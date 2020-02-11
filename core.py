@@ -19,6 +19,10 @@ def getLocation(id):
     r = requests.get(url=(URL+id))
     data = r.json()
     return data
+@eel.expose
+def close_port():
+    scanner.close_port()
+    return
 
 @eel.expose
 def get_ports():
