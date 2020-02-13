@@ -1,0 +1,57 @@
+<div id="loading" *ngIf="loading">
+  <p><img src="assets/loader.gif" /></p>
+</div>
+<div fxLayout="row" class="content">
+  <div fxFlex="40" class="list-ports">
+    <h4>DANH SÁCH PORT: <mat-icon style="color: #0b7100;" title="Refresh danh sách port" (click)="getListPort()">autorenew</mat-icon></h4>
+    <mat-form-field *ngIf="ports.length > 0">
+        <mat-select [value]='currentPort' (selectionChange)="openPort($event)">
+          <mat-option *ngFor="let item of ports" [value]='item.port'>
+            {{item.port}} - {{item.desc}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+  </div>  
+  <div fxFlex="30" style="padding-left: 20px;">
+    <h4>PORT ĐANG MỞ:</h4>
+    <span class="open-p">
+      {{currentPort}}
+    </span>
+  </div>
+  <div fxFlex="30" style="padding-left: 20px;">
+    <h4 style="margin-bottom: 0">CHỨC NĂNG:</h4>
+    <mat-form-field>
+        <mat-select [(ngModel)]='task'>
+          <mat-option [value]='1'>
+            CHUYỂN ĐƠN HOÀN
+          </mat-option>
+          <mat-option [value]='2'>
+            XEM ĐƠN
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+  </div>  
+</div>
+<div fxLayout="row">
+  <h4>KẾT QUẢ QUÉT: <mat-icon (click)="datas = []" title='Xóa kết quả quét' style="color: #f44336;margin-right: 20px;">cancel</mat-icon> </h4>
+</div>
+<div fxLayout="row" class="list-result">
+  <mat-list *ngIf="datas.length > 0">
+    <ng-container *ngFor="let item of datas">
+      <mat-list-item> 
+        <mat-icon [ngStyle]="{'color': item.code==='error'? '#b71206': '#109e00'}" >arrow_forward</mat-icon> 
+        <b class="id">{{item.id}}</b> &nbsp; - &nbsp; 
+        <span *ngIf="item.code === 'error';else exist" style="text-transform: uppercase;">{{item.data['message']}}</span> 
+        <ng-template #exist>
+          <span>
+            <a href="https://gomdon.tuhoc247.com/order/{{item.data.order_sn}}" target="_blank" rel="noopener noreferrer">
+              {{item.data.order_sn}}
+            </a> &nbsp; - &nbsp; {{item.data.gomdon_status | statusName: 'Sell' | uppercase}}
+          </span>
+        </ng-template>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </ng-container>
+    
+  </mat-list>
+</div>

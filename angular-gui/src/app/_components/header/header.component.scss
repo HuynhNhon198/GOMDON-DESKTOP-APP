@@ -1,0 +1,33 @@
+.menu-item {
+  text-transform: uppercase;
+}
+
+.mat-toolbar.mat-primary {
+  background-color: #e3f2fd;
+  position: sticky;
+  position: -webkit-sticky;
+  /* For macOS/iOS Safari */
+  top: 0;
+  /* Sets the sticky toolbar to be on top */
+  z-index: 1000;
+
+  .mat-button-bas {
+    border: #0000 solid 1px;
+  }
+
+  .mat-button-base.is-active {
+    background: #1385ffe8;
+    color: #fff;
+  }
+
+  img {
+    border-radius: 25px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .info span {
+    font-weight: 100;
+    // font-family: 'Lexend Deca', sans-serif;
+  }
+}

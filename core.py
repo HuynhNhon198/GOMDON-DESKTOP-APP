@@ -2,13 +2,18 @@ import io
 import eel
 import requests
 import atexit
+from playsound import playsound
 from classes.scanner import Scanner
+# import time
 
-eel.init('web')
+eel.init('angular-gui/dist/angular-gui')
 scanner = Scanner()
 
 def exit_handler():
     scanner.close_port()
+
+def run_mp3(filePath):
+    playsound(filePath)
 
 atexit.register(exit_handler)
 
@@ -25,13 +30,27 @@ def close_port():
     return
 
 @eel.expose
+def play_audio(fileName):
+    run_mp3('audio/'+fileName+'.mp3')
+    return True
+
+@eel.expose
 def get_ports():
+    print('get')
     ports = scanner.get_list_port()
     return ports
 
 @eel.expose
 def read_data_serial():
     a = scanner.read_data()
+    # while True:
+    #     a = scanner.read_data()
+    #     if a == '':
+    #         a = scanner.read_data()
+    #     else:
+    #         break
+    #     print('1' + a)
+    #     time.sleep(1)
     return a
 
 @eel.expose
@@ -42,7 +61,7 @@ def open_port(port):
         'err': err
     }
 try:
-    eel.start('index.html', block=True, size=(800, 630))
+    eel.start('index.html', block=True, size=(800, 630), port=1998)
 except (SystemExit, MemoryError, KeyboardInterrupt):
     # We can do something here if needed
     # But if we don't catch these safely, the script will crash

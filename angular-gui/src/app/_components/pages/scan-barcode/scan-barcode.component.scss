@@ -1,0 +1,67 @@
+.content > div {
+  padding-right: 10px;
+}
+
+h4 > mat-icon {
+  float: right;
+  margin-top: 5px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.list-ports {
+  mat-form-field {
+    display: block;
+    width: 98%;
+  }
+}
+
+h4 {
+  width: 100%;
+  color: #004eb7;
+  font-weight: 500 !important;
+  font-family: "Barlow", sans-serif;
+  margin-bottom: unset;
+}
+
+span.mat-option-text {
+  font-family: "Inconsolata", monospace !important;
+  letter-spacing: 1px;
+  font-size: 17px !important;
+}
+span.open-p {
+  font-family: "Inconsolata", monospace;
+  font-size: 33px;
+  color: #00881f;
+  font-weight: 500;
+  margin-top: 20px;
+  display: block;
+}
+
+.list-result {
+  mat-list {
+    width: 100%;
+    height: 73vh;
+    overflow-y: scroll;
+    margin-right: 25px;
+
+    .mat-list-item-content {
+      padding-left: 0 !important;
+    }
+
+    .mat-divider {
+      border-top-color: #3a8eff26;
+      border-top-width: 2px;
+      border-top-style: dashed;
+    }
+  }
+
+  .id {
+    letter-spacing: 0.5px;
+    font-size: 20px;
+  }
+
+  mat-icon {
+    margin-right: 10px;
+  }
+}

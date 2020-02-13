@@ -18,9 +18,10 @@ class Scanner(object):
 
     def open_port(self, port, callback = None):
         print(port)
-        self.ser.port = port
+        
         err = ''
         try: 
+            self.ser.port = port
             if self.ser.isOpen():
                 self.ser.close()
             self.ser.open()
@@ -33,7 +34,8 @@ class Scanner(object):
             err = str(e)
             print('Failed: '+ err)
             # exit()
-            # pass
+            pass
+            return err
         return err
 
     def close_port(self):
@@ -69,5 +71,4 @@ class Scanner(object):
             #     callback('reply', response.decode(), namespace='/scanner', room=self.clients_scanner[0])
         except (Exception):
             print("error communicating...: " + str(Exception))        
-        
         return a

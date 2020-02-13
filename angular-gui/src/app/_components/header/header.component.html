@@ -1,0 +1,21 @@
+<mat-toolbar color="primary" *ngIf="fbSV.user | async as user">
+    <mat-toolbar-row>
+        <div class="menu-item" *ngIf="fbSV.role.id as id" [ngSwitch]="true">
+            <ng-container *ngSwitchCase="id !== 0">
+                <a mat-button [routerLink]="'/scan'" routerLinkActive="is-active">
+                    quét mã vạch
+                </a>
+                <a mat-button [routerLink]="'/auto-publish'" routerLinkActive="is-active">
+                    tự động đăng bài
+                </a>
+            </ng-container>
+        </div>
+
+        <span class="menu-spacer"></span>
+        <img src="{{ user.photoURL }}" width="30px" alt="" />
+        <div class="info" [title]="fbSV.role.name">
+            <span style="margin: 0 5px;">{{ user.displayName }}</span>
+        </div>
+        <mat-icon title="ĐĂNG XUẤT" style="cursor: pointer;color: #920000;" (click)="fbSV.logOut()">exit_to_app</mat-icon>
+    </mat-toolbar-row>
+</mat-toolbar>  
