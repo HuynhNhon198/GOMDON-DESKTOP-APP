@@ -3,11 +3,26 @@ import eel
 import requests
 import atexit
 from playsound import playsound
+from flask import Flask, jsonify
 from classes.scanner import Scanner
 # import time
 
 eel.init('angular-gui/dist/angular-gui')
 scanner = Scanner()
+
+app = Flask(__name__)
+
+data = {
+    'name': 'Huin Nhon',
+    'age': 13
+}
+
+@app.route('/product/<id>')
+def product(id):
+    data['id'] = id
+    response = jsonify(data)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
 
 def exit_handler():
     scanner.close_port()
@@ -24,6 +39,12 @@ def getLocation(id):
     r = requests.get(url=(URL+id))
     data = r.json()
     return data
+
+@eel.expose
+def start_server():
+    app.run()
+    return True
+
 @eel.expose
 def close_port():
     scanner.close_port()

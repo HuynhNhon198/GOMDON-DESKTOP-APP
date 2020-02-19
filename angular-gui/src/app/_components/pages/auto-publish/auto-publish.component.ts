@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ComPythonService } from 'src/app/_services/com-python.service';
 
 @Component({
   selector: 'app-auto-publish',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AutoPublishComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private eelSV: ComPythonService,
+  ) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+
+    await this.eelSV.createServerSelelium();
+    console.log('ok');
+
   }
 
 }
