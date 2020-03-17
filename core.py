@@ -10,19 +10,19 @@ from classes.scanner import Scanner
 eel.init('angular-gui/dist/angular-gui')
 scanner = Scanner()
 
-app = Flask(__name__)
+# app = Flask(__name__)
 
 data = {
     'name': 'Huin Nhon',
     'age': 13
 }
 
-@app.route('/product/<id>')
-def product(id):
-    data['id'] = id
-    response = jsonify(data)
-    response.headers.add('Access-Control-Allow-Origin', '*')
-    return response
+# @app.route('/product/<id>')
+# def product(id):
+#     data['id'] = id
+#     response = jsonify(data)
+#     response.headers.add('Access-Control-Allow-Origin', '*')
+#     return response
 
 def exit_handler():
     scanner.close_port()
@@ -40,10 +40,10 @@ def getLocation(id):
     data = r.json()
     return data
 
-@eel.expose
-def start_server():
-    app.run()
-    return True
+# @eel.expose
+# def start_server():
+#     app.run()
+#     return True
 
 @eel.expose
 def close_port():
@@ -82,7 +82,7 @@ def open_port(port):
         'err': err
     }
 try:
-    eel.start('index.html', block=True, size=(800, 630), port=1998)
+    eel.start('index.html', block=True, size=(800, 630), port=1988)
 except (SystemExit, MemoryError, KeyboardInterrupt):
     # We can do something here if needed
     # But if we don't catch these safely, the script will crash

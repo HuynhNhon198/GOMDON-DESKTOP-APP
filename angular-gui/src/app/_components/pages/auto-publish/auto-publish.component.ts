@@ -14,7 +14,7 @@ export class AutoPublishComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
 
-    await this.eelSV.createServerSelelium();
+    // await this.eelSV.createServerSelelium();
     console.log('ok');
 
   }
