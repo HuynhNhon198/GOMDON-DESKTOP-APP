@@ -47,7 +47,7 @@ export class ComPythonService {
       this.readDataFromSerial();
     });
   }
-  
+
   createServerSelelium(): Promise<any> {
     return new Promise(r => {
       eel.start_server()(() => {

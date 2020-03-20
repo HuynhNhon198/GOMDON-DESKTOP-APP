@@ -82,7 +82,7 @@ def open_port(port):
         'err': err
     }
 try:
-    eel.start('index.html', block=True, size=(800, 630), port=1988)
+    eel.start('index.html', block=True, size=(800, 630), port=1998)
 except (SystemExit, MemoryError, KeyboardInterrupt):
     # We can do something here if needed
     # But if we don't catch these safely, the script will crash
